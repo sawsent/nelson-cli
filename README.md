@@ -23,7 +23,7 @@ export OPENAI_API_KEY="your-openai-key"
 export NELSON_LOCATION="path/to/nelson-cli"
 alias nelson="$NELSON_LOCATION/main.sh"
 ```
-#### Step 3: make the script executable!
+#### Step 3: Make the script executable! (you might need to source your shell config file)
 ```bash
 chmod +x $NELSON_LOCATION/main.sh
 ```
