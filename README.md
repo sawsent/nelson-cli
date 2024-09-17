@@ -1,5 +1,5 @@
-# nelson
-Nelsex is a Unix Command Line Tool written in Bash that allows for AI suggestions in the terminal via the OpenAI API. 
+# nelson-cli
+Nelson-cli is a Unix Command Line Tool written in Bash that allows for AI suggestions, error explanations, and more, all straight from the terminal. Currently using OpenAI API (because that's what I know), planning to move into an open source, local LLM in the future. 
 
 ---
 
