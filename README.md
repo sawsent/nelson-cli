@@ -14,7 +14,7 @@ Nelson-cli is a Unix Command Line Tool written in Bash that allows for AI sugges
 ### Instalation
 #### Step 1: clone repo wherever you'd like
 ```bash
-git clone https://wwww.github.com/sawsent/nelson-cli
+git clone https://github.com/sawsent/nelson-cli
 ```
 #### Step 2: add your OpenAI key, folder location, and command alias to your shell config file
 ```bash
