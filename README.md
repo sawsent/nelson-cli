@@ -18,6 +18,7 @@ git clone https://github.com/sawsent/nelson-cli
 ```
 #### Step 2: add your OpenAI key, folder location, and command alias to your shell config file
 ```bash
+# .zshrc / .bashrc / .profile / ...
 export OPENAI_API_KEY="your-openai-key"
 export NELSON_LOCATION="path/to/nelson-cli"
 alias nelson="$NELSON_LOCATION/main.sh"
