@@ -1,16 +1,32 @@
-[2024-09-17 20:46:41]  explain the difference between grep and rg
----------- OUTPUT ----------
+
+----------------------------------------
+
+[2024-09-18 00:20:07] what is the default temperature for openai --model=gpt-4o 
+
+System Prompt: 
+You are a programming expert, especially when it comes to CLI tools. You know how the Unix System Command Line works, to a TEE.
+
+User Prompt: 
+what is the default temperature for openai 
+
+Settings used:
+model        =>  gpt-4o
+mode         =>  default
+max-tokens   =>  500
+temperature  =>  0.9
+
+OpenAI Response: 
 {
-  "id": "chatcmpl-A8YRlOYBxGFXMH9H5SYb11B05CtD3",
+  "id": "chatcmpl-A8bmJh2SlHwnzli5pYFHLiwuiLBJ8",
   "object": "chat.completion",
-  "created": 1726602401,
-  "model": "gpt-3.5-turbo-0125",
+  "created": 1726615207,
+  "model": "gpt-4o-2024-05-13",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "`grep` is a Unix command-line utility for searching plain-text data using regular expressions, while `rg` (ripgrep) is a faster alternative to `grep` with more features and better performance.",
+        "content": "In the context of OpenAI's GPT-3 and similar models, \"temperature\" is a parameter that controls the randomness of the model's output. It does not refer to a physical temperature but rather to the creativity of responses. \n\nA lower temperature (e.g., 0.2) will make the output more deterministic and focused, whereas a higher temperature (e.g., 0.8) will make the output more random and creative. The default temperature often used by OpenAI's API is 0.7, but this can vary depending on specific implementations and use cases.\n\nYou can adjust the temperature when making API calls in OpenAI. For instance, with a cURL request, you can set the temperature parameter as follows:\n\n```sh\ncurl https://api.openai.com/v1/engines/davinci-codex/completions \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -d '{\n    \"prompt\": \"Write a poem about the sea.\",\n    \"max_tokens\": 50,\n    \"temperature\": 0.7\n  }'\n```\n\nIn this example, the `temperature` is explicitly set to 0.7. If the temperature parameter is omitted, the API will use the default value, which typically is 0.7 for most natural language tasks with GPT-3.",
         "refusal": null
       },
       "logprobs": null,
@@ -18,13 +34,15 @@
     }
   ],
   "usage": {
-    "prompt_tokens": 67,
-    "completion_tokens": 42,
-    "total_tokens": 109,
+    "prompt_tokens": 49,
+    "completion_tokens": 286,
+    "total_tokens": 335,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
   },
-  "system_fingerprint": null
+  "system_fingerprint": "fp_992d1ea92d"
 }
----------- OUTPUT END ----------
+
+----------------------------------------
+
