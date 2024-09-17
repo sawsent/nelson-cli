@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source $NELSEX_LOCATION/settings.sh
-source $NELSEX_LOCATION/system_prompts.sh
+source $NELSON_LOCATION/settings.sh
+source $NELSON_LOCATION/system_prompts.sh
 
 SYSTEM_PROMPT="$DEFAULT_SYSTEM_PROMPT"
 
@@ -11,12 +11,12 @@ for arg in "$@"; do
     case "$arg" in
         -*)
             if [ "$SYSTEM_PROMPT" != "$DEFAULT_SYSTEM_PROMPT" ]; then
-                echo "Can't specify multiple modes at once. See available modes in 'nelsex/system_prompts.sh'. Quitting..." 
+                echo "Can't specify multiple modes at once. See available modes in '$NELSON_LOCATION/system_prompts.sh'. Quitting..." 
                 exit 1
             fi
             SYSTEM_PROMPT=$(get_system_prompt "$arg")
             if [ "$?" != "0" ]; then
-                echo "Invalid Mode, not specified in 'nelsex/system_prompts.sh'. Quitting... "
+                echo "Invalid Mode, not specified in '$NELSON_LOCATION/system_prompts.sh'.. Quitting... "
                 exit 1
             fi
             ;;

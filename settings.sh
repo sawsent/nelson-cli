@@ -1,4 +1,4 @@
-# Config File for Nelsex
+# Config File for nelson-cli 
 
 # Model Settings
 export OPENAI_API_KEY="$OPENAI_API_KEY"
@@ -12,7 +12,7 @@ export OUTPUT_DISPLAYER="bat --style grid --language md"
 # export OUTPUT_DISPLAYER="cat"
 
 # Logging
-export OUTPUT_FILE="$NELSEX_LOCATION/output.log"
+export OUTPUT_FILE="$NELSON_LOCATION/output.log"
 export KEEP_LOG=false
 
 # flags

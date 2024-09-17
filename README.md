@@ -14,12 +14,12 @@ Nelson-cli is a Unix Command Line Tool written in Bash that allows for AI sugges
 ### Instalation
 #### Step 1: clone repo wherever you'd like
 ```bash
-git clone https://wwww.github.com/sawsent/nelsex
+git clone https://wwww.github.com/sawsent/nelson-cli
 ```
 #### Step 2: add your OpenAI key, folder location, and command alias to your shell config file
 ```bash
 export OPENAI_API_KEY="your-openai-key"
-export NELSON_LOCATION="path/to/nelson/folder"
+export NELSON_LOCATION="path/to/nelson-cli"
 alias nelson="$NELSON_LOCATION/main.sh"
 ```
 #### Step 3: make the script executable!

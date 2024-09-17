@@ -1,4 +1,4 @@
-source $NELSEX_LOCATION/settings.sh
+source $NELSON_LOCATION/settings.sh
 
 get_system_prompt() {
 

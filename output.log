@@ -1,16 +1,16 @@
-[2024-09-17 20:25:39]  find all lines with an email in log.txt and pipe it into a new file aswell as the terminal
+[2024-09-17 20:46:41]  explain the difference between grep and rg
 ---------- OUTPUT ----------
 {
-  "id": "chatcmpl-A8Y7QuJKYi8qB25fb7Ms96HhnE0FR",
+  "id": "chatcmpl-A8YRlOYBxGFXMH9H5SYb11B05CtD3",
   "object": "chat.completion",
-  "created": 1726601140,
+  "created": 1726602401,
   "model": "gpt-3.5-turbo-0125",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "grep -E -o '\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b' log.txt | tee emails.txt",
+        "content": "`grep` is a Unix command-line utility for searching plain-text data using regular expressions, while `rg` (ripgrep) is a faster alternative to `grep` with more features and better performance.",
         "refusal": null
       },
       "logprobs": null,
@@ -18,9 +18,9 @@
     }
   ],
   "usage": {
-    "prompt_tokens": 88,
-    "completion_tokens": 44,
-    "total_tokens": 132,
+    "prompt_tokens": 67,
+    "completion_tokens": 42,
+    "total_tokens": 109,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
