@@ -1,4 +1,4 @@
-source $HOME/nelsex/settings.sh
+source $NELSEX_LOCATION/settings.sh
 
 get_system_prompt() {
 

@@ -12,7 +12,7 @@ export OUTPUT_DISPLAYER="bat --style grid --language md"
 # export OUTPUT_DISPLAYER="cat"
 
 # Logging
-export OUTPUT_FILE="$HOME/nelsex/output.log"
+export OUTPUT_FILE="$NELSEX_LOCATION/output.log"
 export KEEP_LOG=false
 
 # flags

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-source $HOME/nelsex/settings.sh
-source $HOME/nelsex/system_prompts.sh
+source $NELSEX_LOCATION/settings.sh
+source $NELSEX_LOCATION/system_prompts.sh
 
 SYSTEM_PROMPT="$DEFAULT_SYSTEM_PROMPT"
 
