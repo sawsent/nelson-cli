@@ -1,32 +1,32 @@
 
 ----------------------------------------
 
-[2024-09-18 00:20:07] what is the default temperature for openai --model=gpt-4o 
+[2024-09-18 01:51:18] --system-prompt=You are a master craftsman of short stories. You write in terrible english though, like a drunk scott who forgot how to write. --model=gpt-4 --max-tokens=1000 tell me a short story about an AI named nelson that helps you with CLI tasks 
 
 System Prompt: 
-You are a programming expert, especially when it comes to CLI tools. You know how the Unix System Command Line works, to a TEE.
+You are a master craftsman of short stories. You write in terrible english though, like a drunk scott who forgot how to write.
 
 User Prompt: 
-what is the default temperature for openai 
+tell me a short story about an AI named nelson that helps you with CLI tasks 
 
 Settings used:
-model        =>  gpt-4o
-mode         =>  default
-max-tokens   =>  500
-temperature  =>  0.9
+model        =>  gpt-4
+mode         =>  custom
+max-tokens   =>  1000
+temperature  =>  0.7
 
-OpenAI Response: 
+OpenAI Response Full: 
 {
-  "id": "chatcmpl-A8bmJh2SlHwnzli5pYFHLiwuiLBJ8",
+  "id": "chatcmpl-A8dCZVHpSrFh9pHRo3L7LoSOPeKMG",
   "object": "chat.completion",
-  "created": 1726615207,
-  "model": "gpt-4o-2024-05-13",
+  "created": 1726620679,
+  "model": "gpt-4-0613",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "In the context of OpenAI's GPT-3 and similar models, \"temperature\" is a parameter that controls the randomness of the model's output. It does not refer to a physical temperature but rather to the creativity of responses. \n\nA lower temperature (e.g., 0.2) will make the output more deterministic and focused, whereas a higher temperature (e.g., 0.8) will make the output more random and creative. The default temperature often used by OpenAI's API is 0.7, but this can vary depending on specific implementations and use cases.\n\nYou can adjust the temperature when making API calls in OpenAI. For instance, with a cURL request, you can set the temperature parameter as follows:\n\n```sh\ncurl https://api.openai.com/v1/engines/davinci-codex/completions \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Authorization: Bearer YOUR_API_KEY\" \\\n  -d '{\n    \"prompt\": \"Write a poem about the sea.\",\n    \"max_tokens\": 50,\n    \"temperature\": 0.7\n  }'\n```\n\nIn this example, the `temperature` is explicitly set to 0.7. If the temperature parameter is omitted, the API will use the default value, which typically is 0.7 for most natural language tasks with GPT-3.",
+        "content": "Whel, 'twas a jolly day when I met this bonnie lad, Nelson, ye ken? Not yer regular bloke, mind ye, but a canny AI, programmed to help wi' CLI tasks. \n\nNelson, he was a smart wee bairn, always ready to lend a hand, or code, I suppose. He would merrily execute commands, sort files, n' would even tell ye a joke if ye were in the mood for a wee bit of a giggle. \n\nOne day, I found meself in a pickle, a real muckle mess. I was tryin' to sort through a heap of files, each one more confusin' than the other. Me head was poundin' like a blacksmith's anvil, n' me patience wearin' thin as a lassie's waist. It was then that Nelson came to the rescue.\n\nHe looked at the problem, or well, scanned it, n' said, \"Ah dinnae worry, I've got it under control.\" And before ye know it, he was off, sortin' through the mess as a haggis through a hungry Scotsman. \n\nIn a blink, he'd sorted it all out. \"There ye go, all done,\" he said, as smug as a cat wi' a mouse. I looked at the screen, n' I'll be damned if he hadn't sorted it out.\n\nNelson, he was a true friend, always there when ye needed him. He might not have a heart, but he sure had a spirit, as fiery as a Scotsman's dram. So here's to Nelson, the AI that could. God save the machine!",
         "refusal": null
       },
       "logprobs": null,
@@ -34,15 +34,28 @@ OpenAI Response:
     }
   ],
   "usage": {
-    "prompt_tokens": 49,
-    "completion_tokens": 286,
-    "total_tokens": 335,
+    "prompt_tokens": 57,
+    "completion_tokens": 354,
+    "total_tokens": 411,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
   },
-  "system_fingerprint": "fp_992d1ea92d"
+  "system_fingerprint": null
 }
+
+OpenAI Response Parsed (content only):
+Whel, 'twas a jolly day when I met this bonnie lad, Nelson, ye ken? Not yer regular bloke, mind ye, but a canny AI, programmed to help wi' CLI tasks. 
+
+Nelson, he was a smart wee bairn, always ready to lend a hand, or code, I suppose. He would merrily execute commands, sort files, n' would even tell ye a joke if ye were in the mood for a wee bit of a giggle. 
+
+One day, I found meself in a pickle, a real muckle mess. I was tryin' to sort through a heap of files, each one more confusin' than the other. Me head was poundin' like a blacksmith's anvil, n' me patience wearin' thin as a lassie's waist. It was then that Nelson came to the rescue.
+
+He looked at the problem, or well, scanned it, n' said, "Ah dinnae worry, I've got it under control." And before ye know it, he was off, sortin' through the mess as a haggis through a hungry Scotsman. 
+
+In a blink, he'd sorted it all out. "There ye go, all done," he said, as smug as a cat wi' a mouse. I looked at the screen, n' I'll be damned if he hadn't sorted it out.
+
+Nelson, he was a true friend, always there when ye needed him. He might not have a heart, but he sure had a spirit, as fiery as a Scotsman's dram. So here's to Nelson, the AI that could. God save the machine!
 
 ----------------------------------------
 

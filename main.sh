@@ -60,6 +60,11 @@ for arg in "$@"; do
             fi
             ;;  
 
+        --system-prompt=*)
+                SYSTEM_PROMPT=${arg#--system-prompt=}
+                MODE="custom"
+            ;;
+
         # simple mode choice
         -*)
             if [ "$MODE" = "default" ]; then
@@ -93,11 +98,14 @@ if [ "$KEEP_LOG" = "false" ]; then
     fi
 fi
 
+if [ "$MODE" != "custom" ]; then
 
-SYSTEM_PROMPT=$(get_system_prompt "$MODE")
-if [ "$?" != "0" ]; then
-    echo "$MODE: $MESSAGE_INVALID_MODE"
-    exit 1
+    SYSTEM_PROMPT=$(get_system_prompt "$MODE")
+
+    if [ "$?" != "0" ]; then
+        echo "$MODE: $MESSAGE_INVALID_MODE"
+        exit 1
+    fi
 fi
 
 TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")

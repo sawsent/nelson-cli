@@ -9,7 +9,7 @@ USED_MODE="$6"
 USED_MAX_TOKENS="$7"
 USED_TEMPERATURE="$8"
 OPENAI_RESPONSE="$9"
-OPENAI_RESPONSE_PARSED="$10"
+OPENAI_RESPONSE_PARSED="${10}"
 
 # log template starts here
 echo "
@@ -29,8 +29,11 @@ mode         =>  $USED_MODE
 max-tokens   =>  $USED_MAX_TOKENS
 temperature  =>  $USED_TEMPERATURE
 
-OpenAI Response: 
+OpenAI Response Full: 
 $OPENAI_RESPONSE
+
+OpenAI Response Parsed (content only):
+$OPENAI_RESPONSE_PARSED
 
 ----------------------------------------
 "
