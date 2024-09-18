@@ -51,8 +51,9 @@ You can use this tool for as many reasons as you want. It's very easy to extend 
 3. Choose temperature you want to use _(ex: --temp=0.5)_
 4. Choose the max tokens you want to use _(ex: --max-tokens=100)_
 5. Choose the mode (System Prompt) to use with _--\<mode>_
-6. You can obviously change all defaults (see [settings.sh](settings.sh))
-7. Commands run and OpenAI responses are (optionally) stored in an [output.log](./output.log) file
+6. **NEW:** Choose a one-time System Prompt with _--system-prompt="Custom Prompt"_
+7. You can obviously change all defaults (see [settings.sh](settings.sh))
+8. Commands run and OpenAI responses are (optionally) stored in an [output.log](./output.log) file
 
 ### Core modes 
 (i didn't check if nelson was right btw, and Im using bat with some style opts for the output (see [settings.sh](./settings.sh)))
@@ -98,8 +99,9 @@ nelson --your-custom-mode Your question for nelson
 ---
 
 ## Upcoming
-- [ ] **Adding Context Support** (ex: `nelson --explain-error` / `nelson --wtf`): Automatically sends the last command run and the output for nelson to explain.
-- [ ] **Migrating / adding support for locally-hosted LLMs (like Llama):** I have an API key because I put 10€ on a project once, but not everyone does so it would be better if you could use other APIs and self-hosted LLMs.
+- [x] **Add A Way to override system prompts directly in the command line**: Instead of having to modify [system_prompts.sh](./system_prompts.sh), you can simply do `nelson --system-prompt="Custom System Prompt" question` for occasional System Prompt needs.
+- [ ] **Add Context Support** (ex: `nelson --explain-error` / `nelson --wtf`): Automatically sends the last command run and the output for nelson to explain.
+- [ ] **Migrate / add support for locally-hosted LLMs (like Llama):** I have an API key because I put 10€ on a project once, but not everyone does so it would be better if you could use other APIs and self-hosted LLMs.
 
 
 
