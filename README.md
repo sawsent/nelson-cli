@@ -3,6 +3,11 @@ Nelson-cli is a Unix Command Line Tool written in Bash that allows for AI sugges
 
 ---
 
+## Important
+This tool uses OpenAI's ChatGPT models to generate responses via their API. In order to use this tool, you need to have a valid API key. **If you want to test out the tool, feel free to send me a message on Discord @sawsent , I might be able to provide one**.
+
+---
+
 ## Dependencies
 #### Required:
 - [jq](https://github.com/jqlang/jq) <br>
@@ -13,16 +18,6 @@ Nelson-cli is a Unix Command Line Tool written in Bash that allows for AI sugges
 
 ## Instalation
 ### Step 0: install dependencies with your favorite package manager
-##### Debian-based systems
-```sh
-sudo apt-get install jq
-sudo apt-get install bat
-```
-##### MacOS
-```sh
-brew install jq
-brew install bat 
-```
 ### Step 1: clone repo wherever you'd like
 ```sh
 git clone https://github.com/sawsent/nelson-cli
