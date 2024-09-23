@@ -13,6 +13,7 @@ export OUTPUT_DISPLAYER="bat --style grid --paging=never --language md"
 # export OUTPUT_DISPLAYER="cat"
 
 export SHOW_DEBUG_INFO=false
+export HISTFILE="/Users/vicente.figueiredo/.zhistory"
 
 # Logging
 export OUTPUT_FILE="$NELSON_LOCATION/output.log"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -i
 
 source $NELSON_LOCATION/settings.sh
 source $NELSON_LOCATION/system_prompts.sh
@@ -14,6 +14,8 @@ TEMPERATURE="$DEFAULT_TEMPERATURE"
 USER_PROMPT=""
 DEBUG_FULL_COMMAND=""
 
+LAST_COMMAND=$(tail -n 2 "$HISTFILE" | head -n 1 | sed 's/.*;//' )
+
 for arg in "$@"; do
     DEBUG_FULL_COMMAND="$DEBUG_FULL_COMMAND$arg "
     case "$arg" in
@@ -24,6 +26,22 @@ for arg in "$@"; do
         -h)
             echo "$MESSAGE_HELP_GENERAL"
             exit 0
+            ;;
+
+        --wtf)
+            read -p "Warning: this will run the last command: '$LAST_COMMAND' again. Do you wish to continue? (y/n) >> " response
+
+            case "$response" in
+                [yY])
+                    echo "You choose to continue!"
+                    exit 3
+                    ;;
+
+                *)
+                    echo "Aborting..."
+                    exit 2
+                    ;;
+            esac 
             ;;
 
         --debug)
@@ -54,41 +72,41 @@ for arg in "$@"; do
 
         # mode
         --mode=*)
-            MODE="${arg#--mode=}"
-            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then 
-                echo "$MESSAGE_CHANGED_MODE_TO $MODE"
-            fi
-            ;;  
+        MODE="${arg#--mode=}"
+        if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then 
+            echo "$MESSAGE_CHANGED_MODE_TO $MODE"
+        fi
+        ;;  
 
-        --system-prompt=*)
-                SYSTEM_PROMPT=${arg#--system-prompt=}
-                MODE="custom"
-            ;;
+    --system-prompt=*)
+        SYSTEM_PROMPT=${arg#--system-prompt=}
+        MODE="custom"
+        ;;
 
         # simple mode choice
         -*)
-            if [ "$MODE" = "default" ]; then
+        if [ "$MODE" = "default" ]; then
 
-                MODE="${arg#--}"
-                MODE="${MODE#-}"
-                if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                    echo "$MESSAGE_CHANGED_MODE_TO $MODE"
-                fi
-
-            else
-
-                USER_PROMPT="$USER_PROMPT $arg"
-                if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                    echo "$MESSAGE_MULTIPLE_MODE_INPUT"
-                fi
+            MODE="${arg#--}"
+            MODE="${MODE#-}"
+            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
+                echo "$MESSAGE_CHANGED_MODE_TO $MODE"
             fi
-            ;;
+
+        else
+
+            USER_PROMPT="$USER_PROMPT $arg"
+            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
+                echo "$MESSAGE_MULTIPLE_MODE_INPUT"
+            fi
+        fi
+        ;;
 
         # Anything else that isn't a command -> added to the USER_PROMPT string
         *)
         USER_PROMPT="$USER_PROMPT$arg "
         ;;
-    esac
+esac
 done
 
 
@@ -140,7 +158,7 @@ $PARSED_RESPONSE
 
 # Logging
 if [ "$LOG_MODE" = "never" ]; then
-   exit 0 
+    exit 0 
 fi
 
 if [ "$LOG_MODE" = "one" ]; then
