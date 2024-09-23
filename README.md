@@ -29,7 +29,20 @@ export OPENAI_API_KEY="your-openai-key"
 export NELSON_LOCATION="path/to/nelson-cli"
 alias nelson="$NELSON_LOCATION/main.sh"
 ```
-### Step 3: Make the script executable! 
+### Step 3: Change shell HISTFILE in [settings.sh](settings.sh)
+1. Find out where you Command History file is located
+```sh
+echo $HISTFILE
+# My output: /Users/vicente.figueiredo/.zhistory
+``` 
+2. Replace in [settings.sh](settings.sh)
+```sh
+# setings.sh
+
+# because we're using bash to run the script, it might be different than your main zsh or fish $HISTFILE (I think) 
+export HISTFILE="/Users/vicente.figueiredo/.zhistory" # <- replace with your $HISTFILE
+```
+### Step 4: Make the script executable! 
 You need to source your shell config file to access $NELSON_LOCATION
 ```sh
 chmod +x $NELSON_LOCATION/main.sh
@@ -41,14 +54,14 @@ chmod +x $NELSON_LOCATION/main.sh
 You can use this tool for as many reasons as you want. It's very easy to extend the functionality with custom system prompts and/or aliases. 
 
 ### Core features:
-1. Type naturally, no " needed (you cant use them otherwise jq cant do it's job)
-2. Choose the model you want to use for the specific request _(ex: --model=gpt-4o)_
-3. Choose temperature you want to use _(ex: --temp=0.5)_
-4. Choose the max tokens you want to use _(ex: --max-tokens=100)_
-5. Choose the mode (System Prompt) to use with _--\<mode>_
-6. **NEW:** Choose a one-time System Prompt with _--system-prompt="Custom Prompt"_
+1. Choose the model you want to use for the specific request _(ex: `--model=gpt-4o`)_
+2. Choose temperature you want to use _(ex: `--temp=0.5`)_
+3. Choose the max tokens you want to use _(ex: `--max-tokens=100`)_
+4. Choose the mode (System Prompt) to use with `--\<mode>`
+5. **NEW:** Choose a one-time System Prompt with `--system-prompt="Custom Prompt"`
+6. **NEW:** Ask nelson to explain the last error with `nelson --wtf`
 7. You can obviously change all defaults (see [settings.sh](settings.sh))
-8. Commands run and OpenAI responses are (optionally) stored in an [output.log](./output.log) file
+8. Commands run and OpenAI responses (the whole JSON response) can be stored in an [output.log](./output.log) file
 
 ### Core modes 
 (i didn't check if nelson was right btw, and Im using bat with some style opts for the output (see [settings.sh](./settings.sh)))
@@ -66,6 +79,10 @@ You can use this tool for as many reasons as you want. It's very easy to extend 
 <img src="./resources/screenshot2.png">
 
 ---
+
+### Nelson, wtf???
+You can ask for clarification on your last command run by simply running `nelson --wtf`.
+<img src="./resources/preview-nelson-wtf2.png" width=700>
 
 ### Customizability
 You can easily change defaults, how the code is printed to the terminal in [settings.sh](./settings.sh). 
@@ -89,18 +106,12 @@ Once you do that, it will immediatly be available to use!
 ```sh
 nelson --your-custom-mode Your question for nelson
 ```
-(Keep in mind, you cant use any names that have already been defined as flags like --debug, --max-temperature, etc...)
+(Keep in mind, you cant use any names that have already been defined as flags like --debug, --max-temperature, etc...). These take precedence in the flag hierarchy (they're evaluated first in the case block)
 
 ---
 
 ## Upcoming
 - [x] **Add A Way to override system prompts directly in the command line**: Instead of having to modify [system_prompts.sh](./system_prompts.sh), you can simply do `nelson --system-prompt="Custom System Prompt" question` for occasional System Prompt needs.
-- [ ] **Add Context Support** (ex: `nelson --explain-error` / `nelson --wtf`): Automatically sends the last command run and the output for nelson to explain.
+- [x] **Add Context Support** (ex: `nelson --explain-error` / `nelson --wtf`): Automatically sends the last command run and the output for nelson to explain.
 - [ ] **Migrate / add support for locally-hosted LLMs (like Llama):** I have an API key because I put 10€ on a project once, but not everyone does so it would be better if you could use other APIs and self-hosted LLMs.
-
-
-
-
-
-
 
