@@ -91,12 +91,7 @@ for arg in "$@"; do
     esac
 done
 
-# Clean log if enabled
-if [ "$KEEP_LOG" = "false" ]; then
-    if [ -f $OUTPUT_FILE ]; then
-        rm $OUTPUT_FILE
-    fi
-fi
+
 
 if [ "$MODE" != "custom" ]; then
 
@@ -142,6 +137,17 @@ fi
 echo "
 $PARSED_RESPONSE
 " | $OUTPUT_DISPLAYER 
+
+# Logging
+if [ "$LOG_MODE" = "never" ]; then
+   exit 0 
+fi
+
+if [ "$LOG_MODE" = "one" ]; then
+    if [ -f $OUTPUT_FILE ]; then
+        rm $OUTPUT_FILE
+    fi
+fi
 
 # DONT CHANGE THIS, SEE 'log_template.sh' TO MAKE CHANGES TO THE LOG TEMPLATE
 get_log "$TIMESTAMP" "$DEBUG_FULL_COMMAND" "$SYSTEM_PROMPT" "$USER_PROMPT" "$MODEL" "$MODE" "$MAX_TOKENS" "$TEMPERATURE" "$RESPONSE" "$PARSED_RESPONSE" >> $OUTPUT_FILE

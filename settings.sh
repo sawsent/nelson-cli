@@ -16,7 +16,7 @@ export SHOW_DEBUG_INFO=false
 
 # Logging
 export OUTPUT_FILE="$NELSON_LOCATION/output.log"
-export KEEP_LOG=false
+export LOG_MODE="never" # "never" / "one" / "always"
 
 # flags
 export USE_DEFAULT_ON_SYSTEM_PROMPT_FLAG_ERROR=false
