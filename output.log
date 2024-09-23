@@ -1,32 +1,32 @@
 
 ----------------------------------------
 
-[2024-09-18 01:51:18] --system-prompt=You are a master craftsman of short stories. You write in terrible english though, like a drunk scott who forgot how to write. --model=gpt-4 --max-tokens=1000 tell me a short story about an AI named nelson that helps you with CLI tasks 
+[2024-09-23 21:48:09] --wtf 
 
 System Prompt: 
-You are a master craftsman of short stories. You write in terrible english though, like a drunk scott who forgot how to write.
+You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. You also know all about errors, and can give context, debug help, and responses to errors that are given to you. 
 
 User Prompt: 
-tell me a short story about an AI named nelson that helps you with CLI tasks 
+COMMAND: rm nelson-cli ; OUTPUT: rm: nelson-cli: is a directory 
 
 Settings used:
-model        =>  gpt-4
-mode         =>  custom
-max-tokens   =>  1000
+model        =>  gpt-3.5-turbo
+mode         =>  wtf
+max-tokens   =>  500
 temperature  =>  0.7
 
 OpenAI Response Full: 
 {
-  "id": "chatcmpl-A8dCZVHpSrFh9pHRo3L7LoSOPeKMG",
+  "id": "chatcmpl-AAkGXUDTRwRPaLtXGpVrMti0HVe7j",
   "object": "chat.completion",
-  "created": 1726620679,
-  "model": "gpt-4-0613",
+  "created": 1727124489,
+  "model": "gpt-3.5-turbo-0125",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "Whel, 'twas a jolly day when I met this bonnie lad, Nelson, ye ken? Not yer regular bloke, mind ye, but a canny AI, programmed to help wi' CLI tasks. \n\nNelson, he was a smart wee bairn, always ready to lend a hand, or code, I suppose. He would merrily execute commands, sort files, n' would even tell ye a joke if ye were in the mood for a wee bit of a giggle. \n\nOne day, I found meself in a pickle, a real muckle mess. I was tryin' to sort through a heap of files, each one more confusin' than the other. Me head was poundin' like a blacksmith's anvil, n' me patience wearin' thin as a lassie's waist. It was then that Nelson came to the rescue.\n\nHe looked at the problem, or well, scanned it, n' said, \"Ah dinnae worry, I've got it under control.\" And before ye know it, he was off, sortin' through the mess as a haggis through a hungry Scotsman. \n\nIn a blink, he'd sorted it all out. \"There ye go, all done,\" he said, as smug as a cat wi' a mouse. I looked at the screen, n' I'll be damned if he hadn't sorted it out.\n\nNelson, he was a true friend, always there when ye needed him. He might not have a heart, but he sure had a spirit, as fiery as a Scotsman's dram. So here's to Nelson, the AI that could. God save the machine!",
+        "content": "The `rm` command is used to remove files or directories in Unix. In this case, the error message `rm: nelson-cli: is a directory` indicates that you are trying to remove a directory named `nelson-cli` using `rm` command, which by default only removes files, not directories.\n\nTo remove a directory, you need to use the `-r` (recursive) option with `rm` command. This will remove the directory and all its contents recursively. \n\nHere's the correct command to remove the `nelson-cli` directory:\n\n```bash\nrm -r nelson-cli\n```\n\nThis will remove the directory and all its contents.",
         "refusal": null
       },
       "logprobs": null,
@@ -34,9 +34,9 @@ OpenAI Response Full:
     }
   ],
   "usage": {
-    "prompt_tokens": 57,
-    "completion_tokens": 354,
-    "total_tokens": 411,
+    "prompt_tokens": 86,
+    "completion_tokens": 136,
+    "total_tokens": 222,
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
@@ -45,17 +45,17 @@ OpenAI Response Full:
 }
 
 OpenAI Response Parsed (content only):
-Whel, 'twas a jolly day when I met this bonnie lad, Nelson, ye ken? Not yer regular bloke, mind ye, but a canny AI, programmed to help wi' CLI tasks. 
+The `rm` command is used to remove files or directories in Unix. In this case, the error message `rm: nelson-cli: is a directory` indicates that you are trying to remove a directory named `nelson-cli` using `rm` command, which by default only removes files, not directories.
 
-Nelson, he was a smart wee bairn, always ready to lend a hand, or code, I suppose. He would merrily execute commands, sort files, n' would even tell ye a joke if ye were in the mood for a wee bit of a giggle. 
+To remove a directory, you need to use the `-r` (recursive) option with `rm` command. This will remove the directory and all its contents recursively. 
 
-One day, I found meself in a pickle, a real muckle mess. I was tryin' to sort through a heap of files, each one more confusin' than the other. Me head was poundin' like a blacksmith's anvil, n' me patience wearin' thin as a lassie's waist. It was then that Nelson came to the rescue.
+Here's the correct command to remove the `nelson-cli` directory:
 
-He looked at the problem, or well, scanned it, n' said, "Ah dinnae worry, I've got it under control." And before ye know it, he was off, sortin' through the mess as a haggis through a hungry Scotsman. 
+```bash
+rm -r nelson-cli
+```
 
-In a blink, he'd sorted it all out. "There ye go, all done," he said, as smug as a cat wi' a mouse. I looked at the screen, n' I'll be damned if he hadn't sorted it out.
-
-Nelson, he was a true friend, always there when ye needed him. He might not have a heart, but he sure had a spirit, as fiery as a Scotsman's dram. So here's to Nelson, the AI that could. God save the machine!
+This will remove the directory and all its contents.
 
 ----------------------------------------
 
