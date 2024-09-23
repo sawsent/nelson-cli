@@ -6,6 +6,9 @@ get_system_prompt() {
         default)
             echo "$DEFAULT_SYSTEM_PROMPT"
             ;;
+        wtf)
+            echo "You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. You also know all about errors, and can give context, debug help, and responses to errors that are given to you. "
+            ;;
         neat)
             echo "You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. You are a concise responder. You always respond in a very concise manner, using concise language."
             ;;

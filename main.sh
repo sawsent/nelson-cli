@@ -1,5 +1,4 @@
 #!/bin/bash
-
 source $NELSON_LOCATION/settings.sh
 source $NELSON_LOCATION/system_prompts.sh
 source $NELSON_LOCATION/messages.sh
@@ -14,6 +13,7 @@ TEMPERATURE="$DEFAULT_TEMPERATURE"
 USER_PROMPT=""
 DEBUG_FULL_COMMAND=""
 
+
 for arg in "$@"; do
     DEBUG_FULL_COMMAND="$DEBUG_FULL_COMMAND$arg "
     case "$arg" in
@@ -24,6 +24,25 @@ for arg in "$@"; do
         -h)
             echo "$MESSAGE_HELP_GENERAL"
             exit 0
+            ;;
+
+        --wtf)
+            LAST_COMMAND=$(tail -n 2 "$HISTFILE" | head -n 1 | sed 's/.*;//' )
+
+            if [ "$ASK_WTF_CONFIRMATION" = "true" ]; then
+                read -p "Warning: this will run the last command: '$LAST_COMMAND' again. Do you wish to continue? (this alert can be disabled in settings) (y/n) >> " response
+
+                if [ "$response" != "y" ] && [ "$response" != "Y" ]; then
+                    echo "Aborting..."
+                    exit 2
+                else 
+                    echo "Running '$LAST_COMMAND' and evaluating the result."
+                fi
+            else
+               echo "Running '$LAST_COMMAND' and evaluating the result."
+            fi
+
+            MODE="wtf"
             ;;
 
         --debug)
@@ -54,35 +73,35 @@ for arg in "$@"; do
 
         # mode
         --mode=*)
-            MODE="${arg#--mode=}"
-            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then 
-                echo "$MESSAGE_CHANGED_MODE_TO $MODE"
-            fi
-            ;;  
+        MODE="${arg#--mode=}"
+        if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then 
+            echo "$MESSAGE_CHANGED_MODE_TO $MODE"
+        fi
+        ;;  
 
-        --system-prompt=*)
-                SYSTEM_PROMPT=${arg#--system-prompt=}
-                MODE="custom"
-            ;;
+    --system-prompt=*)
+        SYSTEM_PROMPT=${arg#--system-prompt=}
+        MODE="custom"
+        ;;
 
         # simple mode choice
         -*)
-            if [ "$MODE" = "default" ]; then
+        if [ "$MODE" = "default" ]; then
 
-                MODE="${arg#--}"
-                MODE="${MODE#-}"
-                if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                    echo "$MESSAGE_CHANGED_MODE_TO $MODE"
-                fi
-
-            else
-
-                USER_PROMPT="$USER_PROMPT $arg"
-                if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                    echo "$MESSAGE_MULTIPLE_MODE_INPUT"
-                fi
+            MODE="${arg#--}"
+            MODE="${MODE#-}"
+            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
+                echo "$MESSAGE_CHANGED_MODE_TO $MODE"
             fi
-            ;;
+
+        else
+
+            USER_PROMPT="$USER_PROMPT $arg"
+            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
+                echo "$MESSAGE_MULTIPLE_MODE_INPUT"
+            fi
+        fi
+        ;;
 
         # Anything else that isn't a command -> added to the USER_PROMPT string
         *)
@@ -91,8 +110,6 @@ for arg in "$@"; do
     esac
 done
 
-
-
 if [ "$MODE" != "custom" ]; then
 
     SYSTEM_PROMPT=$(get_system_prompt "$MODE")
@@ -100,6 +117,17 @@ if [ "$MODE" != "custom" ]; then
     if [ "$?" != "0" ]; then
         echo "$MODE: $MESSAGE_INVALID_MODE"
         exit 1
+    fi
+fi
+
+
+if [ "$MODE" = "wtf" ]; then 
+
+    OUTPUT=$(eval $LAST_COMMAND 2>&1)
+    USER_PROMPT="COMMAND: $LAST_COMMAND; OUTPUT: $(echo $OUTPUT | tr '\n', ' ' | tr '"' "'")"
+
+    if [ "$SHOW_COMMAND_BEFORE_WTF_RESPONSE" = "true" ]; then
+        echo -e "COMMAND: $LAST_COMMAND \nOUTPUT: \n$OUTPUT"
     fi
 fi
 
@@ -140,7 +168,7 @@ $PARSED_RESPONSE
 
 # Logging
 if [ "$LOG_MODE" = "never" ]; then
-   exit 0 
+    exit 0 
 fi
 
 if [ "$LOG_MODE" = "one" ]; then
