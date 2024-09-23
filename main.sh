@@ -30,7 +30,7 @@ for arg in "$@"; do
             LAST_COMMAND=$(tail -n 2 "$HISTFILE" | head -n 1 | sed 's/.*;//' )
 
             if [ "$ASK_WTF_CONFIRMATION" = "true" ]; then
-                read -p "Warning: this will run the last command: '$LAST_COMMAND' again. Do you wish to continue? (y/n) >> " response
+                read -p "Warning: this will run the last command: '$LAST_COMMAND' again. Do you wish to continue? (this alert can be disabled in settings) (y/n) >> " response
 
                 if [ "$response" != "y" ] && [ "$response" != "Y" ]; then
                     echo "Aborting..."
@@ -38,10 +38,11 @@ for arg in "$@"; do
                 else 
                     echo "Running '$LAST_COMMAND' and evaluating the result."
                 fi
+            else
+               echo "Running '$LAST_COMMAND' and evaluating the result."
             fi
 
             MODE="wtf"
-
             ;;
 
         --debug)
