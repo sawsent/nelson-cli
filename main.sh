@@ -1,5 +1,4 @@
-#!/bin/bash -i
-
+#!/bin/bash
 source $NELSON_LOCATION/settings.sh
 source $NELSON_LOCATION/system_prompts.sh
 source $NELSON_LOCATION/messages.sh
@@ -14,7 +13,6 @@ TEMPERATURE="$DEFAULT_TEMPERATURE"
 USER_PROMPT=""
 DEBUG_FULL_COMMAND=""
 
-LAST_COMMAND=$(tail -n 2 "$HISTFILE" | head -n 1 | sed 's/.*;//' )
 
 for arg in "$@"; do
     DEBUG_FULL_COMMAND="$DEBUG_FULL_COMMAND$arg "
@@ -29,19 +27,21 @@ for arg in "$@"; do
             ;;
 
         --wtf)
-            read -p "Warning: this will run the last command: '$LAST_COMMAND' again. Do you wish to continue? (y/n) >> " response
+            LAST_COMMAND=$(tail -n 2 "$HISTFILE" | head -n 1 | sed 's/.*;//' )
 
-            case "$response" in
-                [yY])
-                    echo "You choose to continue!"
-                    exit 3
-                    ;;
+            if [ "$ASK_WTF_CONFIRMATION" = "true" ]; then
+                read -p "Warning: this will run the last command: '$LAST_COMMAND' again. Do you wish to continue? (y/n) >> " response
 
-                *)
+                if [ "$response" != "y" ] && [ "$response" != "Y" ]; then
                     echo "Aborting..."
                     exit 2
-                    ;;
-            esac 
+                else 
+                    echo "Running '$LAST_COMMAND' and evaluating the result."
+                fi
+            fi
+
+            MODE="wtf"
+
             ;;
 
         --debug)
@@ -106,10 +106,8 @@ for arg in "$@"; do
         *)
         USER_PROMPT="$USER_PROMPT$arg "
         ;;
-esac
+    esac
 done
-
-
 
 if [ "$MODE" != "custom" ]; then
 
@@ -118,6 +116,17 @@ if [ "$MODE" != "custom" ]; then
     if [ "$?" != "0" ]; then
         echo "$MODE: $MESSAGE_INVALID_MODE"
         exit 1
+    fi
+fi
+
+
+if [ "$MODE" = "wtf" ]; then 
+
+    OUTPUT=$(eval $LAST_COMMAND 2>&1)
+    USER_PROMPT="COMMAND: $LAST_COMMAND; OUTPUT: $(echo $OUTPUT | tr '\n', ' ' | tr '"' "'")"
+
+    if [ "$SHOW_COMMAND_BEFORE_WTF_RESPONSE" = "true" ]; then
+        echo -e "COMMAND: $LAST_COMMAND \nOUTPUT: \n$OUTPUT"
     fi
 fi
 

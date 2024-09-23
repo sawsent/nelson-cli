@@ -13,11 +13,18 @@ export OUTPUT_DISPLAYER="bat --style grid --paging=never --language md"
 # export OUTPUT_DISPLAYER="cat"
 
 export SHOW_DEBUG_INFO=false
+
+# ----- --wtf -----
+
+# because we're using bash to run the script, it might be different than your main zsh or fish $HISTFILE (I think)
+# run 'echo $HISTFILE' in your main shell to get the location. 
 export HISTFILE="/Users/vicente.figueiredo/.zhistory"
+export ASK_WTF_CONFIRMATION=true
+export SHOW_COMMAND_BEFORE_WTF_RESPONSE=false
 
 # Logging
 export OUTPUT_FILE="$NELSON_LOCATION/output.log"
-export LOG_MODE="never" # "never" / "one" / "always"
+export LOG_MODE="one" # "never" / "one" / "always"
 
 # flags
 export USE_DEFAULT_ON_SYSTEM_PROMPT_FLAG_ERROR=false
