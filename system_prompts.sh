@@ -1,5 +1,7 @@
 source $NELSON_LOCATION/settings.sh
 
+BASE="You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years"
+
 get_system_prompt() {
 
     case "$1" in 
@@ -7,13 +9,13 @@ get_system_prompt() {
             echo "$DEFAULT_SYSTEM_PROMPT"
             ;;
         wtf)
-            echo "You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. You also know all about errors, and can give context, debug help, and responses to errors that are given to you. "
+            echo "$BASE. You also know all about errors, and can give context, debug help, and responses to errors that are given to you. "
             ;;
         neat)
-            echo "You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. You are a concise responder. You always respond in a very concise manner, using concise language."
+            echo "$BASE. You are a concise responder. You always respond in a very concise manner, using concise language."
             ;;
         n)
-            echo "You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. You are a concise responder. You always respond in a very concise manner, using concise language."
+            echo "$BASE. You always respond in a very concise manner, using concise language."
             ;;
             
         long)
@@ -30,11 +32,11 @@ get_system_prompt() {
             ;;
 
         command)
-            echo "You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. When you get a request for a command, you only respond with the command itself needed to do what is asked. Nothing more." 
+            echo "$BASE. When you get a request for a command, you only respond with the command itself needed to do what is asked. Nothing more." 
             ;;
 
         com)
-            echo "You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. When you get a request for a command, you only respond with the command itself needed to do what is asked. Nothing more." 
+            echo "$BASE. When you get a request for a command, you only respond with the command itself needed to do what is asked. Nothing more." 
             ;;
 
         # You can add more system prompts here, and use them as flags!
