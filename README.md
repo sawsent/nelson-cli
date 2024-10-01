@@ -67,22 +67,22 @@ You can use this tool for as many reasons as you want. It's very easy to extend 
 (i didn't check if nelson was right btw, and Im using bat with some style opts for the output (see [settings.sh](./settings.sh)))
 
 1. **--neat (-n):** Answers in the most concise way possible
-<img src="./resources/screenshot3.png">
+<img src="./res/screenshot3.png">
 
 2. **--long (-l):** Explains in more detail
-<img src="./resources/screenshot4.png" width=600>
+<img src="./res/screenshot4.png" width=600>
 
 3. **--code:** Simply codes what's requested. No comments and no explanations
-<img src="./resources/screenshot1.png" width=600>
+<img src="./res/screenshot1.png" width=600>
 
 4. **--command (-com):** Provides a Shell command based on the given parameters
-<img src="./resources/screenshot2.png">
+<img src="./res/screenshot2.png">
 
 ---
 
 ### Nelson, wtf???
 You can ask for clarification on your last command run by simply running `nelson --wtf`.
-<img src="./resources/preview-nelson-wtf2.png" width=700>
+<img src="./res/preview-nelson-wtf2.png" width=700>
 
 ### Customizability
 You can easily change defaults, how the code is printed to the terminal in [settings.sh](./settings.sh). 
