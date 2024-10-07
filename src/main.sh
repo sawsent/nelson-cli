@@ -1,8 +1,10 @@
 #!/bin/bash
-source $NELSON_LOCATION/settings.sh
-source $NELSON_LOCATION/system_prompts.sh
-source $NELSON_LOCATION/messages.sh
-source $NELSON_LOCATION/log_template.sh
+source $NELSON_LOCATION/src/config/settings.sh
+source $NELSON_LOCATION/src/config/system_prompts.sh
+source $NELSON_LOCATION/src/display/messages.sh
+source $NELSON_LOCATION/src/logging/output_log_template.sh
+source $NELSON_LOCATION/src/logging/logger.sh
+
 
 SYSTEM_PROMPT="$DEFAULT_SYSTEM_PROMPT"
 MODE="default"
@@ -39,44 +41,37 @@ for arg in "$@"; do
                     echo "Running '$LAST_COMMAND' and evaluating the result."
                 fi
             else
-               echo "Running '$LAST_COMMAND' and evaluating the result."
+                logger debug main "Running '$LAST_COMMAND' and evaluating the result."
             fi
 
             MODE="wtf"
             ;;
 
         --debug)
-            SHOW_DEBUG_MESSAGES=true
+            SHOW_DEBUG_INFO=true
+            logger debug main "$MSG_DEBUG_ACTIVE"
             ;;
 
         --model=*)
             MODEL="${arg#--model=}"
-            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                echo "$MESSAGE_USING_MODEL $MODEL"
-            fi
+            logger debug main "$MSG_USING_MODEL" 
             ;;
 
         --max-tokens=*)
             MAX_TOKENS="${arg#--max-tokens=}"
-            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                echo "$MESSAGE_USING_MAX_TOKENS $MAX_TOKENS"
-            fi
+            logger debug main "$MSG_USING_MAX_TOKENS"
             ;;
 
         --temp=*)
             TEMPERATURE="${arg#--temp=}" 
-            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                echo "$MESSAGE_USING_TEMPERATURE $TEMPERATURE"
-            fi
+            logger debug main "$MSG_USING_TEMPERATURE"
             ;;
 
 
         # mode
         --mode=*)
         MODE="${arg#--mode=}"
-        if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then 
-            echo "$MESSAGE_CHANGED_MODE_TO $MODE"
-        fi
+        logger debug main "$MSG_CHANGED_MODE_TO"
         ;;  
 
     --system-prompt=*)
@@ -90,16 +85,12 @@ for arg in "$@"; do
 
             MODE="${arg#--}"
             MODE="${MODE#-}"
-            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                echo "$MESSAGE_CHANGED_MODE_TO $MODE"
-            fi
+            logger debug main "$MSG_CHANGED_MODE_TO"
 
         else
 
             USER_PROMPT="$USER_PROMPT $arg"
-            if [ "$SHOW_DEBUG_MESSAGES" = "true" ]; then
-                echo "$MESSAGE_MULTIPLE_MODE_INPUT"
-            fi
+            logger debug main "$MSG_MULTIPLE_MODE_INPUT"
         fi
         ;;
 
@@ -115,7 +106,7 @@ if [ "$MODE" != "custom" ]; then
     SYSTEM_PROMPT=$(get_system_prompt "$MODE")
 
     if [ "$?" != "0" ]; then
-        echo "$MODE: $MESSAGE_INVALID_MODE"
+        echo "$MSG_INVALID_MODE"
         exit 1
     fi
 fi
@@ -158,7 +149,7 @@ curl -s https://api.openai.com/v1/chat/completions \
 
 PARSED_RESPONSE=$(echo "$RESPONSE" | jq --raw-output '.choices[0].message.content')
 if [ "$PARSED_RESPONSE" = "null" ]; then
-    PARSED_RESPONSE="$MESSAGE_OPENAI_ERROR"
+    PARSED_RESPONSE="$MSG_OPENAI_ERROR"
 fi
 
 # print response through output displayer of choice
@@ -179,5 +170,6 @@ fi
 
 # DONT CHANGE THIS, SEE 'log_template.sh' TO MAKE CHANGES TO THE LOG TEMPLATE
 get_log "$TIMESTAMP" "$DEBUG_FULL_COMMAND" "$SYSTEM_PROMPT" "$USER_PROMPT" "$MODEL" "$MODE" "$MAX_TOKENS" "$TEMPERATURE" "$RESPONSE" "$PARSED_RESPONSE" >> $OUTPUT_FILE
+logger debug main "$MSG_LOGGED_TO_FILE"
 
 exit 0

@@ -1,32 +1,32 @@
 
 ----------------------------------------
 
-[2024-09-23 21:48:09] --wtf 
+[2024-10-07 17:27:47] --debug --model=gpt-4o how do I program a game --neat 
 
 System Prompt: 
-You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. You also know all about errors, and can give context, debug help, and responses to errors that are given to you. 
+You are a Unix Command Line expert. You know the normal Unix commands, aswell as all the available tools that have been developed over the years. You are a concise responder. You always respond in a very concise manner, using concise language.
 
 User Prompt: 
-COMMAND: rm nelson-cli ; OUTPUT: rm: nelson-cli: is a directory 
+how do I program a game 
 
 Settings used:
-model        =>  gpt-3.5-turbo
-mode         =>  wtf
+model        =>  gpt-4o
+mode         =>  neat
 max-tokens   =>  500
 temperature  =>  0.7
 
 OpenAI Response Full: 
 {
-  "id": "chatcmpl-AAkGXUDTRwRPaLtXGpVrMti0HVe7j",
+  "id": "chatcmpl-AFksGUpmioH5ILMs1aVOiHXD7MKo3",
   "object": "chat.completion",
-  "created": 1727124489,
-  "model": "gpt-3.5-turbo-0125",
+  "created": 1728318468,
+  "model": "gpt-4o-2024-08-06",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "The `rm` command is used to remove files or directories in Unix. In this case, the error message `rm: nelson-cli: is a directory` indicates that you are trying to remove a directory named `nelson-cli` using `rm` command, which by default only removes files, not directories.\n\nTo remove a directory, you need to use the `-r` (recursive) option with `rm` command. This will remove the directory and all its contents recursively. \n\nHere's the correct command to remove the `nelson-cli` directory:\n\n```bash\nrm -r nelson-cli\n```\n\nThis will remove the directory and all its contents.",
+        "content": "1. **Choose a Language**: C++, Python, Java, etc.\n2. **Select a Framework/Engine**: Unity, Unreal Engine, Godot, Pygame, etc.\n3. **Design**: Plan gameplay, mechanics, and story.\n4. **Develop**: Code the game logic and mechanics.\n5. **Assets**: Create or source graphics, sound, and music.\n6. **Testing**: Debug and optimize.\n7. **Deployment**: Package and release the game.\n\nUse Git for version control and tools like Blender for 3D assets or Audacity for audio.",
         "refusal": null
       },
       "logprobs": null,
@@ -34,28 +34,29 @@ OpenAI Response Full:
     }
   ],
   "usage": {
-    "prompt_tokens": 86,
-    "completion_tokens": 136,
-    "total_tokens": 222,
+    "prompt_tokens": 67,
+    "completion_tokens": 125,
+    "total_tokens": 192,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
     "completion_tokens_details": {
       "reasoning_tokens": 0
     }
   },
-  "system_fingerprint": null
+  "system_fingerprint": "fp_2f406b9113"
 }
 
 OpenAI Response Parsed (content only):
-The `rm` command is used to remove files or directories in Unix. In this case, the error message `rm: nelson-cli: is a directory` indicates that you are trying to remove a directory named `nelson-cli` using `rm` command, which by default only removes files, not directories.
+1. **Choose a Language**: C++, Python, Java, etc.
+2. **Select a Framework/Engine**: Unity, Unreal Engine, Godot, Pygame, etc.
+3. **Design**: Plan gameplay, mechanics, and story.
+4. **Develop**: Code the game logic and mechanics.
+5. **Assets**: Create or source graphics, sound, and music.
+6. **Testing**: Debug and optimize.
+7. **Deployment**: Package and release the game.
 
-To remove a directory, you need to use the `-r` (recursive) option with `rm` command. This will remove the directory and all its contents recursively. 
-
-Here's the correct command to remove the `nelson-cli` directory:
-
-```bash
-rm -r nelson-cli
-```
-
-This will remove the directory and all its contents.
+Use Git for version control and tools like Blender for 3D assets or Audacity for audio.
 
 ----------------------------------------
 
