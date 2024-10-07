@@ -24,6 +24,7 @@ export SHOW_COMMAND_BEFORE_WTF_RESPONSE=false
 
 # Logging
 export OUTPUT_FILE="$NELSON_LOCATION/output.log"
+export NELSON_HISTORY="$NELSON_LOCATION/history.log"
 export LOG_MODE="one" # "never" / "one" / "always"
 
 # flags

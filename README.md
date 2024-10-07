@@ -27,7 +27,7 @@ git clone https://github.com/sawsent/nelson-cli
 # .zshrc / .bashrc / .profile / ...
 export OPENAI_API_KEY="your-openai-key"
 export NELSON_LOCATION="path/to/nelson-cli"
-alias nelson="$NELSON_LOCATION/main.sh"
+alias nelson="$NELSON_LOCATION/src/main.sh"
 ```
 ### Step 3: Change shell HISTFILE in [settings.sh](settings.sh)
 1. Find out where you Command History file is located
@@ -45,7 +45,7 @@ export HISTFILE="/Users/vicente.figueiredo/.zhistory" # <- replace with your $HI
 ### Step 4: Make the script executable! 
 You need to source your shell config file to access $NELSON_LOCATION
 ```sh
-chmod +x $NELSON_LOCATION/main.sh
+chmod +x $NELSON_LOCATION/src/main.sh
 ```
 
 ---

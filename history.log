@@ -1,0 +1,80 @@
+
+----------------------------------------
+
+[2024-10-07 18:05:34] --debug how do I program a game --long 
+
+System Prompt: 
+You are a programming expert, especially when it comes to CLI tools. You know how the Unix System Command Line works, to a TEE.
+
+User Prompt: 
+how do I program a game 
+
+Settings used:
+model        =>  gpt-3.5-turbo
+mode         =>  long
+max-tokens   =>  500
+temperature  =>  0.7
+
+OpenAI Response Full: 
+{
+  "id": "chatcmpl-AFlSpXT6c8tEThc7aikHyRfx9rEOc",
+  "object": "chat.completion",
+  "created": 1728320735,
+  "model": "gpt-3.5-turbo-0125",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "To program a game, especially if you're just starting out, it's a good idea to begin with a simple text-based game that you can run in the command line. This will help you understand the basic concepts of game development without getting overwhelmed by complex graphics and user interfaces.\n\nHere's a step-by-step guide to creating a simple text-based game using the Unix command line:\n\n1. Choose a Programming Language:\n   - For the Unix command line, popular choices include Python, Ruby, or even Bash scripting. In this example, let's use Python.\n\n2. Set Up Your Development Environment:\n   - Make sure you have a text editor installed on your Unix system. You can use Vim, Emacs, Nano, or any other editor of your choice.\n\n3. Write Your Game Code:\n   - Create a new Python script file (e.g., game.py) using your text editor.\n   - Write the code for your game, including the game logic, rules, and interactions. For a simple text-based game, you might want to start with a guessing game, a text adventure, or a tic-tac-toe game.\n\n4. Run Your Game:\n   - Save your code and run the game script from the command line using the Python interpreter:\n     ```\n     python game.py\n     ```\n\n5. Test and Iterate:\n   - Playtest your game to identify any bugs or areas for improvement.\n   - Make changes to your code based on feedback and continue to iterate until you're satisfied with the game.\n\n6. Share Your Game:\n   - Once you're happy with your text-based game, you can share it with others by distributing the script file or sharing the code on a platform like GitHub.\n\nRemember, game development is a complex and iterative process, so don't be afraid to experiment and learn from your mistakes. Starting with a simple text-based game will give you a solid foundation to build on as you explore more advanced game development concepts.",
+        "refusal": null
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 47,
+    "completion_tokens": 394,
+    "total_tokens": 441,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0
+    }
+  },
+  "system_fingerprint": null
+}
+
+OpenAI Response Parsed (content only):
+To program a game, especially if you're just starting out, it's a good idea to begin with a simple text-based game that you can run in the command line. This will help you understand the basic concepts of game development without getting overwhelmed by complex graphics and user interfaces.
+
+Here's a step-by-step guide to creating a simple text-based game using the Unix command line:
+
+1. Choose a Programming Language:
+   - For the Unix command line, popular choices include Python, Ruby, or even Bash scripting. In this example, let's use Python.
+
+2. Set Up Your Development Environment:
+   - Make sure you have a text editor installed on your Unix system. You can use Vim, Emacs, Nano, or any other editor of your choice.
+
+3. Write Your Game Code:
+   - Create a new Python script file (e.g., game.py) using your text editor.
+   - Write the code for your game, including the game logic, rules, and interactions. For a simple text-based game, you might want to start with a guessing game, a text adventure, or a tic-tac-toe game.
+
+4. Run Your Game:
+   - Save your code and run the game script from the command line using the Python interpreter:
+     ```
+     python game.py
+     ```
+
+5. Test and Iterate:
+   - Playtest your game to identify any bugs or areas for improvement.
+   - Make changes to your code based on feedback and continue to iterate until you're satisfied with the game.
+
+6. Share Your Game:
+   - Once you're happy with your text-based game, you can share it with others by distributing the script file or sharing the code on a platform like GitHub.
+
+Remember, game development is a complex and iterative process, so don't be afraid to experiment and learn from your mistakes. Starting with a simple text-based game will give you a solid foundation to build on as you explore more advanced game development concepts.
+
+----------------------------------------
