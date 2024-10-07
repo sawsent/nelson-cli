@@ -20,11 +20,11 @@ for arg in "$@"; do
     DEBUG_FULL_COMMAND="$DEBUG_FULL_COMMAND$arg "
     case "$arg" in
         --help)
-            echo "$MESSAGE_HELP_GENERAL"
+            SHOW_HELP general 
             exit 0
             ;;
         -h)
-            echo "$MESSAGE_HELP_GENERAL"
+            SHOW_HELP general 
             exit 0
             ;;
 

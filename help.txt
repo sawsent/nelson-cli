@@ -1,0 +1,44 @@
+
+Usage: main.sh [options] [user input]
+
+Description:
+This tool allows you to interact with OpenAI's GPT model directly from your terminal. You can customize the model's parameters, modify the behavior, and evaluate the result of your terminal commands. Below are the available options and usage examples.
+
+Options:
+  --help, -h            Display this help message.
+  
+  --wtf                 Re-run the last command from your terminal's history, evaluate its result, and pass the output as a prompt to GPT.
+                        Requires confirmation (can be disabled in settings).
+  
+  --debug               Enable debug mode to show detailed log output for troubleshooting purposes.
+  
+  --model=[model]       Specify the GPT model to use. By default, it uses the value in the settings configuration.
+                        Example: --model=gpt-4
+  
+  --max-tokens=[num]    Set the maximum number of tokens for the response.
+                        Example: --max-tokens=1000
+  
+  --temp=[num]          Adjust the temperature for response randomness (0-1). Lower values make outputs more deterministic.
+                        Example: --temp=0.7
+  
+  --mode=[mode]         Change the system prompt mode (e.g., neat, long, code, etc.). The prompt is set from a predefined list. See '$NELSON_LOCATION/src/config/system_prompts.sh'
+                        Example: --mode=default
+  
+  --system-prompt=[msg] Provide a custom system prompt, bypassing predefined modes.
+                        Example: --system-prompt="You're a helpful assistant."
+
+Input:
+  Any argument that does not match the above flags will be treated as part of the user input prompt.
+
+Examples:
+  nelson Explain how recursion works in programming
+  nelson --model=gpt-4 "Summarize the latest research on quantum computing."
+  nelson --wtf
+  nelson --max-tokens=500 --temp=0.9 "Write a short story about a futuristic world."
+
+Logging:
+  By default, the script logs all interactions to a history log. To change logging behavior, see the logger configuration in the settings.
+
+Notes:
+  - Ensure the necessary environment variables like `OPENAI_API_KEY` and file paths (e.g., for settings) are correctly configured.
+  - You can customize system prompts and other settings in the configuration files located at $NELSON_LOCATION/src/config.
