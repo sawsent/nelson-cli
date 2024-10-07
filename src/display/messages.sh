@@ -1,4 +1,5 @@
 source "$NELSON_LOCATION/src/config/settings.sh"
+HELP_MESSAGE_LOCATION="$NELSON_LOCATION/help.txt"
 
 # error
 export MSG_INVALID_MODE="Invalid Mode, not specified in '$NELSON_LOCATION/src/config/system_prompts.sh'.. Quitting... "
@@ -12,3 +13,13 @@ export MSG_CHANGED_MODE_TO="Using Mode: "
 
 # help
 export MSG_HELP_GENERAL="Sorry, help message isn't implemented yet. Feel free to help @ https://www.github.com/sawsent/nelson-cli !"
+
+SHOW_HELP() {
+    case "$1" in 
+        general)
+            cat $HELP_MESSAGE_LOCATION
+            ;;
+    esac
+}
+
+export -f SHOW_HELP
