@@ -29,13 +29,13 @@ export OPENAI_API_KEY="your-openai-key"
 export NELSON_LOCATION="path/to/nelson-cli"
 alias nelson="$NELSON_LOCATION/src/main.sh"
 ```
-### Step 3: Change shell HISTFILE in [settings.sh](settings.sh)
+### Step 3: Change shell HISTFILE in [settings.sh](src/config/settings.sh)
 1. Find out where you Command History file is located
 ```sh
 echo $HISTFILE
 # My output: /Users/vicente.figueiredo/.zhistory
 ``` 
-2. Replace in [settings.sh](settings.sh)
+2. Replace in [settings.sh](src/config/settings.sh)
 ```sh
 # setings.sh
 
@@ -60,11 +60,11 @@ You can use this tool for as many reasons as you want. It's very easy to extend 
 4. Choose the mode (System Prompt) to use with `--\<mode>`
 5. **NEW:** Choose a one-time System Prompt with `--system-prompt="Custom Prompt"`
 6. **NEW:** Ask nelson to explain the last error with `nelson --wtf`
-7. You can obviously change all defaults (see [settings.sh](settings.sh))
-8. Commands run and OpenAI responses (the whole JSON response) can be stored in an [output.log](./output.log) file
+7. You can obviously change all defaults (see [settings.sh](src/config/settings.sh))
+8. Commands run and OpenAI responses (the whole JSON response) can be stored in an [history.log](history.log) file
 
 ### Core modes 
-(i didn't check if nelson was right btw, and Im using bat with some style opts for the output (see [settings.sh](./settings.sh)))
+(i didn't check if nelson was right btw, and Im using bat with some style opts for the output (see [settings.sh](src/config/settings.sh)))
 
 1. **--neat (-n):** Answers in the most concise way possible
 <img src="./resources/screenshot3.png">
@@ -85,9 +85,9 @@ You can ask for clarification on your last command run by simply running `nelson
 <img src="./resources/preview-nelson-wtf2.png" width=700>
 
 ### Customizability
-You can easily change defaults, how the code is printed to the terminal in [settings.sh](./settings.sh). 
+You can easily change defaults, how the code is printed to the terminal in [settings.sh](src/config/settings.sh). 
 
-You can also easily add more modes (System Prompts) in the [system_prompts.sh](./system_prompts.sh). Simply follow the pattern that's already there!
+You can also easily add more modes (System Prompts) in the [system_prompts.sh](src/config/system_prompts.sh). Simply follow the pattern that's already there!
 
 ```sh
 case $1 in
@@ -111,7 +111,7 @@ nelson --your-custom-mode Your question for nelson
 ---
 
 ## Upcoming
-- [x] **Add A Way to override system prompts directly in the command line**: Instead of having to modify [system_prompts.sh](./system_prompts.sh), you can simply do `nelson --system-prompt="Custom System Prompt" question` for occasional System Prompt needs.
+- [x] **Add A Way to override system prompts directly in the command line**: Instead of having to modify [system_prompts.sh](src/config/system_prompts.sh), you can simply do `nelson --system-prompt="Custom System Prompt" question` for occasional System Prompt needs.
 - [x] **Add Context Support** (ex: `nelson --explain-error` / `nelson --wtf`): Automatically sends the last command run and the output for nelson to explain.
 - [ ] **Migrate / add support for locally-hosted LLMs (like Llama):** I have an API key because I put 10€ on a project once, but not everyone does so it would be better if you could use other APIs and self-hosted LLMs.
 
