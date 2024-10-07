@@ -54,24 +54,24 @@ for arg in "$@"; do
 
         --model=*)
             MODEL="${arg#--model=}"
-            logger debug main "$MSG_USING_MODEL" 
+            logger debug main "Changed Model to '$MODEL'" 
             ;;
 
         --max-tokens=*)
             MAX_TOKENS="${arg#--max-tokens=}"
-            logger debug main "$MSG_USING_MAX_TOKENS"
+            logger debug main "Set max tokens to: $MAX_TOKENS"
             ;;
 
         --temp=*)
             TEMPERATURE="${arg#--temp=}" 
-            logger debug main "$MSG_USING_TEMPERATURE"
+            logger debug main "Using temperature: $TEMPERATURE"
             ;;
 
 
         # mode
         --mode=*)
         MODE="${arg#--mode=}"
-        logger debug main "$MSG_CHANGED_MODE_TO"
+        logger debug main "$MSG_CHANGED_MODE_TO $MODE"
         ;;  
 
     --system-prompt=*)
@@ -85,12 +85,12 @@ for arg in "$@"; do
 
             MODE="${arg#--}"
             MODE="${MODE#-}"
-            logger debug main "$MSG_CHANGED_MODE_TO"
+            logger debug main "$MSG_CHANGED_MODE_TO '$MODE'"
 
         else
 
             USER_PROMPT="$USER_PROMPT $arg"
-            logger debug main "$MSG_MULTIPLE_MODE_INPUT"
+            logger debug main "Encountered argument $arg after already setting mode $MODE, parsing it as part of user prompt."
         fi
         ;;
 
@@ -106,7 +106,7 @@ if [ "$MODE" != "custom" ]; then
     SYSTEM_PROMPT=$(get_system_prompt "$MODE")
 
     if [ "$?" != "0" ]; then
-        echo "$MSG_INVALID_MODE"
+        echo "$MODE: $MSG_INVALID_MODE"
         exit 1
     fi
 fi
@@ -152,24 +152,16 @@ if [ "$PARSED_RESPONSE" = "null" ]; then
     PARSED_RESPONSE="$MSG_OPENAI_ERROR"
 fi
 
+# Logging to file
+
+# DONT CHANGE THIS, SEE 'log_template.sh' TO MAKE CHANGES TO THE LOG TEMPLATE
+log=$(get_log "$TIMESTAMP" "$DEBUG_FULL_COMMAND" "$SYSTEM_PROMPT" "$USER_PROMPT" "$MODEL" "$MODE" "$MAX_TOKENS" "$TEMPERATURE" "$RESPONSE" "$PARSED_RESPONSE")  
+logger log-history "$log"
+
 # print response through output displayer of choice
 echo "
 $PARSED_RESPONSE
 " | $OUTPUT_DISPLAYER 
 
 # Logging
-if [ "$LOG_MODE" = "never" ]; then
-    exit 0 
-fi
-
-if [ "$LOG_MODE" = "one" ]; then
-    if [ -f $OUTPUT_FILE ]; then
-        rm $OUTPUT_FILE
-    fi
-fi
-
-# DONT CHANGE THIS, SEE 'log_template.sh' TO MAKE CHANGES TO THE LOG TEMPLATE
-get_log "$TIMESTAMP" "$DEBUG_FULL_COMMAND" "$SYSTEM_PROMPT" "$USER_PROMPT" "$MODEL" "$MODE" "$MAX_TOKENS" "$TEMPERATURE" "$RESPONSE" "$PARSED_RESPONSE" >> $OUTPUT_FILE
-logger debug main "$MSG_LOGGED_TO_FILE"
-
 exit 0
