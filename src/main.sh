@@ -156,5 +156,19 @@ echo "
 $PARSED_RESPONSE
 " | $OUTPUT_DISPLAYER 
 
+
+if [ "$MODE" = "command" ] || [ "$MODE" = "com" ]; then
+    if [ "$ALWAYS_COPY_COMMAND" = "true" ]; then
+        echo -n "$PARSED_RESPONSE" | pbcopy
+        echo "(Coppied to clipboard)"
+    else
+        read -p "[enter] to copy command to clipboard. Other to not. >> " answer
+        if [ "$answer" = "" ]; then 
+            echo -n "$PARSED_RESPONSE" | pbcopy
+            echo "(Coppied to clipboard)"
+        fi
+    fi
+fi
+
 # Logging
 exit 0

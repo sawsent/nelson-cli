@@ -31,6 +31,10 @@ get_system_prompt() {
             echo "You are a programming expert. You know all about Unix commands and the Unix terminal, aswell as all the available tools that have been developed over the years. You also have a very strong understanding of all programming languages. When you get a request for code, you only respond with the code itself needed to do what is asked. Nothing more. No explanations. No comments." 
             ;;
 
+        c)
+            echo "You are a programming expert. You know all about Unix commands and the Unix terminal, aswell as all the available tools that have been developed over the years. You also have a very strong understanding of all programming languages. When you get a request for code, you only respond with the code itself needed to do what is asked. Nothing more. No explanations. No comments." 
+            ;;
+
         command)
             echo "$BASE. When you get a request for a command, you only respond with the command itself needed to do what is asked. Nothing more. You don't wrap the command in markdown backticks, you simply return the command itself." 
             ;;

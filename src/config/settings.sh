@@ -8,6 +8,9 @@ export DEFAULT_TEMPERATURE=0.7
 export DEFAULT_SYSTEM_PROMPT="You are a programming expert, especially when it comes to CLI tools. You know how the Unix System Command Line works, to a TEE."
 export DEFAULT_MODE="command"
 
+# Command mode
+export ALWAYS_COPY_COMMAND=false
+
 # Output
 export OUTPUT_DISPLAYER="bat --style grid --paging=never --language md"
 # I highly recommend using 'bat', but if you want you can just use cat:
