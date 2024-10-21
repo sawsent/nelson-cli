@@ -5,7 +5,7 @@ BASE="You are a Unix Command Line expert. You know the normal Unix commands, asw
 get_system_prompt() {
 
     case "$1" in 
-        default)
+        normal)
             echo "$DEFAULT_SYSTEM_PROMPT"
             ;;
         wtf)
@@ -32,7 +32,7 @@ get_system_prompt() {
             ;;
 
         command)
-            echo "$BASE. When you get a request for a command, you only respond with the command itself needed to do what is asked. Nothing more." 
+            echo "$BASE. When you get a request for a command, you only respond with the command itself needed to do what is asked. Nothing more. You don't wrap the command in markdown backticks, you simply return the command itself." 
             ;;
 
         com)

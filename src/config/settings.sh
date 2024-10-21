@@ -2,10 +2,11 @@
 
 # Model Settings
 export OPENAI_API_KEY="$OPENAI_API_KEY"
-export DEFAULT_MODEL="gpt-3.5-turbo"
+export DEFAULT_MODEL="gpt-4o"
 export DEFAULT_MAX_TOKENS=500
 export DEFAULT_TEMPERATURE=0.7
 export DEFAULT_SYSTEM_PROMPT="You are a programming expert, especially when it comes to CLI tools. You know how the Unix System Command Line works, to a TEE."
+export DEFAULT_MODE="command"
 
 # Output
 export OUTPUT_DISPLAYER="bat --style grid --paging=never --language md"

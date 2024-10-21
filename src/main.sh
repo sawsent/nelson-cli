@@ -7,7 +7,7 @@ source $NELSON_LOCATION/src/logging/logger.sh
 
 
 SYSTEM_PROMPT="$DEFAULT_SYSTEM_PROMPT"
-MODE="default"
+MODE="$DEFAULT_MODE"
 MODEL="$DEFAULT_MODEL"
 MAX_TOKENS="$DEFAULT_MAX_TOKENS"
 TEMPERATURE="$DEFAULT_TEMPERATURE"
@@ -70,35 +70,28 @@ for arg in "$@"; do
 
         # mode
         --mode=*)
-        MODE="${arg#--mode=}"
-        logger debug main "$MSG_CHANGED_MODE_TO $MODE"
-        ;;  
+            MODE="${arg#--mode=}"
+            logger debug main "$MSG_CHANGED_MODE_TO $MODE"
+            ;;  
 
-    --system-prompt=*)
-        SYSTEM_PROMPT=${arg#--system-prompt=}
-        MODE="custom"
-        ;;
+        --system-prompt=*)
+            SYSTEM_PROMPT=${arg#--system-prompt=}
+            MODE="custom"
+            ;;
 
         # simple mode choice
-        -*)
-        if [ "$MODE" = "default" ]; then
+         -*)
 
             MODE="${arg#--}"
             MODE="${MODE#-}"
             logger debug main "$MSG_CHANGED_MODE_TO '$MODE'"
-
-        else
-
-            USER_PROMPT="$USER_PROMPT $arg"
-            logger debug main "Encountered argument $arg after already setting mode $MODE, parsing it as part of user prompt."
-        fi
-        ;;
+            ;;
 
         # Anything else that isn't a command -> added to the USER_PROMPT string
         *)
         USER_PROMPT="$USER_PROMPT$arg "
         ;;
-    esac
+esac
 done
 
 if [ "$MODE" != "custom" ]; then
