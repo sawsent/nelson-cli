@@ -1,5 +1,5 @@
-# nelson-cli
-Nelson-cli is a Unix Command Line Tool written in Bash that allows for AI suggestions, error explanations, and more, all straight from the terminal. Currently using OpenAI API (because that's what I know), planning to move into an open source, local LLM in the future. 
+# nelson
+Nelson is a Unix Command Line Tool written in Bash that allows for AI suggestions, error explanations, and more, all straight from the terminal. Currently using OpenAI API (because that's what I know), planning to move into an open source, local LLM in the future. 
 
 ---
 
@@ -20,13 +20,13 @@ This tool uses OpenAI's ChatGPT models to generate responses via their API. In o
 ### Step 0: install dependencies with your favorite package manager
 ### Step 1: clone repo wherever you'd like
 ```sh
-git clone https://github.com/sawsent/nelson-cli
+git clone https://github.com/sawsent/nelson.git
 ```
 ### Step 2: add your OpenAI key, folder location, and command alias to your shell config file
 ```sh
 # .zshrc / .bashrc / .profile / ...
 export OPENAI_API_KEY="your-openai-key"
-export NELSON_LOCATION="path/to/nelson-cli"
+export NELSON_LOCATION="path/to/nelson"
 alias nelson="$NELSON_LOCATION/src/main.sh"
 ```
 ### Step 3: Change shell HISTFILE in [settings.sh](src/config/settings.sh)
@@ -72,11 +72,12 @@ You can use this tool for as many reasons as you want. It's very easy to extend 
 2. **--long (-l):** Explains in more detail
 <img src="./resources/screenshot4.png" width=600>
 
-3. **--code:** Simply codes what's requested. No comments and no explanations
+3. **--code (-c):** Simply codes what's requested. No comments and no explanations
 <img src="./resources/screenshot1.png" width=600>
 
 4. **--command (-com):** Provides a Shell command based on the given parameters
-<img src="./resources/screenshot2.png">
+**NEW:** copy the command to the clipboard with a single click!
+<img src="./resources/command_with_copy.png">
 
 ---
 
